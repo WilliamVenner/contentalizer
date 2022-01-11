@@ -1,4 +1,4 @@
-# The Contentalizer!
+# 🪄 The Contentalizer!
 
 This quick script will search for mounted Workshop addons that contain content and add them to the clientside Workshop download list.
 
