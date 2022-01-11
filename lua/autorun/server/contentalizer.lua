@@ -1,6 +1,8 @@
 -- By Billy
--- Workshop link here
+-- https://steamcommunity.com/sharedfiles/filedetails/?id=2716242595
 -- https://github.com/WilliamVenner/contentalizer
+
+if CLIENT or not game.IsDedicated() then return end -- Just in case people subscribe to it (which they will)
 
 local findContent
 do
