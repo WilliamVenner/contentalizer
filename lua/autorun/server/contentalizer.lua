@@ -10,22 +10,26 @@ do
 	function findContent(path, dir, state)
 		state = state or { foundContent = false, foundMap = false, foundCurMap = false }
 		local f, d = file.Find(path .. "*", dir)
-		for _, f in ipairs(f) do
-			if string.EndsWith(f, ".bsp") then
-				state.foundMap = true
-				if f:gsub("%.bsp$", "") == game.GetMap() then
-					state.foundCurMap = true
-				end
-			else
-				for _, ext in ipairs(exts) do
-					if string.EndsWith(f, "." .. ext) then
-						state.foundContent = true
+		if istable(f) then
+			for _, f in ipairs(f) do
+				if string.EndsWith(f, ".bsp") then
+					state.foundMap = true
+					if f:gsub("%.bsp$", "") == game.GetMap() then
+						state.foundCurMap = true
+					end
+				else
+					for _, ext in ipairs(exts) do
+						if string.EndsWith(f, "." .. ext) then
+							state.foundContent = true
+						end
 					end
 				end
 			end
 		end
-		for _, d in ipairs(d) do
-			findContent(path .. d .. "/", dir, state)
+		if istable(d) then
+			for _, d in ipairs(d) do
+				findContent(path .. d .. "/", dir, state)
+			end
 		end
 		return state
 	end
